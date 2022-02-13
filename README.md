@@ -52,5 +52,6 @@ npm install
 Run the website on your local machine(You need to change createConnection options to you local mysql server, Google login and Facebook login would not work because their redirect domains are arranged in respective developer accounts):
 
 ```
-nodemon
+npm run build
+npm run start
 ```
