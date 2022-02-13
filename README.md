@@ -3,6 +3,7 @@
 ## You can see the website [HERE](https://movie-app-hck.herokuapp.com/)
 
 - Website uses a free heroku account so it may take a while load.
+- On the off of getting an Error please contact the administrator: husamcahit@gmail.com & +905325511756
 
 ### Introduction
 
