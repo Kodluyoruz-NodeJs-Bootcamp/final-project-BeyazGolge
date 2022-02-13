@@ -1,0 +1,64 @@
+<div
+  class="modal fade"
+  id="searchFilmModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="color: black" class="modal-title" id="searchFilmModal">
+          Search for a film
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--FORM-->
+        <form method="POST" action="/search/films" class="form-horizontal">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <input
+                type="text"
+                name="filmSearchQuery"
+                class="form-control"
+                placeholder="Enter a title"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-sm-6 d-flex">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-radius btn-brd grd1"
+                >
+                  Search
+                </button>
+              </div>
+              <div class="col-sm-6">
+                <button
+                  type="submit"
+                  class="btn btn-light btn-radius btn-brd grd1"
+                  data-dismiss="modal"
+                  aria-hidden="true"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!--FORM-END-->
+      </div>
+    </div>
+  </div>
+</div>

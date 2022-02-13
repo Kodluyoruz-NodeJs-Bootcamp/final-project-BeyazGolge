@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <%- include("./partials/_head.ejs") %>
+  <body class="is-boxed has-animations">
+    <div class="body-wrap">
+      <header class="site-header">
+        <div class="container">
+          <div class="site-header-inner">
+            <div class="brand header-brand">
+              <h1 class="m-0">
+                <a href="/">
+                  <img
+                    class="header-logo-image"
+                    src="/images/logo.svg"
+                    alt="Logo"
+                  />
+                </a>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="container">
+            <div class="hero-inner">
+              <div class="hero-copy">
+                <h1 class="hero-title mt-0">
+                  Your search results...
+                </h1>
+               
+
+
+              </div>
+             
+              <!-- end row -->
+            </div>
+            <div class="row">
+              <% for(const item of listOfFilms){ %>
+               <div class="col-sm-4">
+               <div class="card" style="margin-top: 10px;">
+                 <img class="card-img-top" src= <%= item.image %>>
+                 <div class="card-body">
+                   <h5 class="card-title" style="color:black"><%= item.title %></h5>
+                   <form method="POST" action="/posts/addFilmToFavorites" class="form-horizontal">
+                    <div class="form-group">
+                        <input
+                          type="hidden"
+                          name="name"
+                          class="form-control"
+                          value= <%- JSON.stringify(item.title) %>
+                        /> 
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="hidden"
+                        name="image"
+                        class="form-control"
+                        value= <%- item.image %>
+                      /> 
+                  </div>
+                          <button
+                            type="submit"
+                            class="btn btn-primary btn-radius btn-brd grd1"
+                          >
+                            Add to favorites
+                          </button>
+                  </form>
+                 </div>
+               </div>
+             </div>
+               <%}%>
+
+             </div>
+      </main>
+
+      <%-include("./partials/_footer.ejs")%>
+    </div>
+
+    <script src="/js/main.min.js"></script>
+  </body>
+</html>

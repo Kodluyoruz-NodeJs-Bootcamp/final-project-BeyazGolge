@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <%- include("./partials/_head.ejs") %>
+  <body class="is-boxed has-animations">
+    <div class="body-wrap">
+  <%- include("./partials/_header.ejs") %>
+      
+
+      <main>
+        <section class="hero">
+          <div class="container">
+            <div class="hero-inner">
+              <div class="hero-copy">
+                <h1 class="hero-title mt-0">
+                  Welcome to Community Favorites 
+                </h1>
+                <p class="hero-paragraph">
+                  You can see what people added to their favorites, like and comment to their posts
+                </p>
+                
+                <div class="btn-group" role="group">
+                  <div class="hero-cta">
+                    <a
+                      type="button"
+                      class="button button-primary"
+                      href="/logout"
+                    >
+                      Logout</a
+                    >
+                  </div>
+                  <div class="hero-cta">
+                    <a
+                      type="button"
+                      class="button button-primary"
+                      href="/dashboard"
+                    >
+                      My Dashboard</a
+                    >
+                  </div>
+                </div>
+              </div>
+             
+              <!-- end row -->
+            </div>
+
+        <!--FavoritedFilmsSTART-->
+        <section style="margin-top: 40px" class="cta section">
+          
+          <div class="cta-inner section-inner">
+            <h3 class="section-title mt-0">Films that people added to their favorites</h3>
+          </div>
+        
+      </section>
+        <div class="row" style="margin-top:20px;">
+        <% for(const item of filmCards){ %>
+          <div class="col-sm-4">
+          <div class="card" style="margin-top: 10px;">
+            <img class="card-img-top" style="height: 450px;" src= <%= item.filmImage %>>
+            <div class="card-body">
+              <h5 class="card-title" style="color:black"><%= item.filmName %></h5>
+              <p class="card-title" style="color:black">By <%= item.sharedBy %></p>
+              <p class="card-title" style="color:black"><%= item.likeCount %> likes</p>
+              
+          <div class="btn-group" role="group">
+
+             <%if(!usersLikesIDs.includes(item.postID)){ %>
+                      <a class="btn btn-primary btn-radius btn-brd grd1" style="text-decoration: none;" href="/posts/<%=item.postID%>/likes" >Like</a>
+                      <a class="btn btn-primary btn-radius btn-brd grd1" style="text-decoration: none; margin-left:10px;" href="/posts/<%=item.postID%>/comments" >Comments</a>
+
+                     <%}else{%>
+                      <a class="btn btn-danger btn-radius btn-brd grd1" style="text-decoration: none;" href="/posts/<%=item.postID%>/likes" >Unlike</a>
+                      <a class="btn btn-primary btn-radius btn-brd grd1" style="text-decoration: none; margin-left:10px;" href="/posts/<%=item.postID%>/comments" >Comments</a>
+
+
+                      <%}%>
+                    </div>      
+             
+            </div>
+          </div>
+        </div>
+          <%}%>
+        </div>
+        <!--FavoritedFilmsEND-->
+
+        <!--FavoritedActorsStart-->
+        <section style="margin-top: 40px" class="cta section">
+          
+          <div class="cta-inner section-inner">
+            <h3 class="section-title mt-0">Actors that people added to their favorites</h3>
+          </div>
+        
+      </section>
+        <div class="row" style="margin-top:20px;">
+        <% for(const item of actorCards){ %>
+          <div class="col-sm-4">
+          <div class="card" style="margin-top: 10px;">
+            <img class="card-img-top" style="height: 450px;" src= <%= item.actorImage %>>
+            <div class="card-body">
+              <h5 class="card-title" style="color:black"><%= item.actorName %></h5>
+              <p class="card-title" style="color:black">By <%= item.sharedBy %></p>
+              <p class="card-title" style="color:black"><%= item.likeCount %> likes</p>
+              
+          <div class="btn-group" role="group">
+
+             <%if(!usersLikesIDs.includes(item.postID)){ %>
+                       <a class="btn btn-primary btn-radius btn-brd grd1" style="text-decoration: none;" href="/posts/<%=item.postID%>/likes" >Like</a>
+                      <a class="btn btn-primary btn-radius btn-brd grd1" style="text-decoration: none; margin-left:10px;" href="/posts/<%=item.postID%>/comments" >Comments</a>
+
+                     <%}else{%>
+                      <a class="btn btn-danger btn-radius btn-brd grd1" style="text-decoration: none;" href="/posts/<%=item.postID%>/likes" >Unlike</a>
+                      <a class="btn btn-primary btn-radius btn-brd grd1" style="text-decoration: none; margin-left:10px;" href="/posts/<%=item.postID%>/comments" >Comments</a>
+
+
+                      <%}%>
+                    </div>      
+             
+            </div>
+          </div>
+        </div>
+          <%}%>
+        </div>
+        <!--FavoritedActorsEnd-->
+      </main>
+
+      <%-include("./partials/_footer.ejs")%>
+    </div>
+
+    <script src="/js/main.min.js"></script>
+  </body>
+</html>

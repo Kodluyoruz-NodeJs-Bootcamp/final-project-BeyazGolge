@@ -1,0 +1,96 @@
+<div
+  class="modal fade"
+  id="loginModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="color: black" class="modal-title" id="registerModalTitle">
+          Login
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--FORM-->
+        <form method="POST" action="/login" class="form-horizontal">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="Email"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-sm-6 d-flex">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-radius btn-brd grd1"
+                >
+                  Login
+                </button>
+              </div>
+              <div class="col-sm-6">
+                <button
+                  type="submit"
+                  class="btn btn-light btn-radius btn-brd grd1"
+                  data-dismiss="modal"
+                  aria-hidden="true"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!--FORM-END-->
+        <div class="modal-footer">
+          <div class="row">
+            <div class="col-sm-6 d-flex">
+              <a
+                class="btn btn-primary btn-radius btn-brd grd1"
+                href="<%= getGoogleOAuthURL %>"
+              >
+                Login with Google
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a
+                class="btn btn-primary btn-radius btn-brd grd1"
+                href="<%= getFacebookOAuthURL %>"
+              >
+                Login with Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

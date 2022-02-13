@@ -1,0 +1,27 @@
+<section style="margin-top: 40px" class="cta section">
+  <div class="container">
+    <div class="cta-inner section-inner">
+      <h3 class="section-title mt-0">Things you added to your favorites</h3>
+      <div class="cta-cta">
+        <button
+          type="button"
+          class="button button-primary"
+          data-toggle="modal"
+          data-target="#searchFilmModal"
+        >
+          Add a Film
+        </button>
+        <button
+          type="button"
+          class="button button-primary"
+          data-toggle="modal"
+          data-target="#searchActorModal"
+        >
+          Add an Actor or Actress
+        </button>
+      </div>
+    </div>
+  </div>
+  <%- include("./_searchFilmModal.ejs") %> <%-
+  include("./_searchActorModal.ejs") %>
+</section>

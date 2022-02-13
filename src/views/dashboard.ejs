@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <%- include("./partials/_head.ejs") %>
+  <body class="is-boxed has-animations">
+    <div class="body-wrap">
+  <%- include("./partials/_header.ejs") %>
+      
+
+      <main>
+        <section class="hero">
+          <div class="container">
+            <div class="hero-inner">
+              <div class="hero-copy">
+                <h1 class="hero-title mt-0">
+                  Welcome to Dashboard <%= name %>
+                </h1>
+                <p class="hero-paragraph">
+                  You can add Films and Actors or Actresses to your favorites, share them with the community and comment on other peoples tastes
+                </p>
+                
+                <div class="btn-group" role="group">
+                  <div class="hero-cta">
+                    <a
+                      type="button"
+                      class="button button-primary"
+                      href="/logout"
+                    >
+                      Logout</a
+                    >
+                  </div>
+                  <div class="hero-cta">
+                    <a
+                      type="button"
+                      class="button button-primary"
+                      href="/posts"
+                    >
+                      Community Favorites</a
+                    >
+                  </div>
+                  <div class="hero-cta">
+                    <button
+                      type="button"
+                      class="button button-primary"
+                      data-toggle="modal"
+                      data-target="#searchFilmModal"
+                    >
+                      Add a Film
+                    </button>
+                  </div>
+                  <div class="hero-cta">
+                    <button
+                      type="button"
+                      class="button button-primary"
+                      data-toggle="modal"
+                      data-target="#searchActorModal"
+                    >
+                      Add an Actor or Actress
+                    </button>
+                  </div>
+                </div>
+              </div>
+             
+              <!-- end row -->
+            </div>
+            
+            <section style="margin-top: 40px" class="cta section">
+              
+                <div class="cta-inner section-inner">
+                  <h3 class="section-title mt-0">Films that you added to your favorites</h3>
+                </div>
+              
+            </section>
+
+        <!--FavoritedFilmsSTART-->
+        <div class="row">
+        <% for(const item of filmCards){ %>
+          <div class="col-sm-4">
+          <div class="card" style="margin-top: 10px;">
+            <img class="card-img-top" style="height: 450px;" src= <%= item.image %>>
+            <div class="card-body">
+              <h5 class="card-title" style="color:black"><%= item.filmName %></h5>
+              
+             <%if(!item.isPublic){ %>
+                     <a
+                     style = "text-decoration: none;"
+                       href="/posts/<%= item.postID %>/makePostPublic"
+                       class="btn btn-primary btn-radius btn-brd grd1"
+                     >
+                       Make Public
+                      
+                     </a>
+                     <%}else{%>
+                      <a
+                      style = "text-decoration: none;"
+                       href="/posts/<%= item.postID %>/makePostPublic"
+                       class="btn btn-danger btn-radius btn-brd grd1"
+                     >
+                       Make Private
+                      
+                     </a>
+                      <%}%>
+             
+            </div>
+          </div>
+        </div>
+          <%}%>
+        </div>
+
+
+        <section style="margin-top: 40px" class="cta section">
+          
+            <div class="cta-inner section-inner">
+              <h3 class="section-title mt-0">Actors that you added to your favorites</h3>
+            </div>
+          
+        </section>
+
+
+        <div class="row">
+          <% for(const item of actorCards){ %>
+            <div class="col-sm-4">
+            <div class="card" style="margin-top: 10px;">
+              <img class="card-img-top" style="height: 450px;" src= <%= item.image %>>
+              <div class="card-body">
+                <h5 class="card-title" style="color:black"><%= item.actorName %></h5>
+                
+          
+                 
+               <%if(!item.isPublic){ %>
+                       <a
+                       style = "text-decoration: none;"
+                         href="/posts/<%= item.postID %>/makePostPublic"
+                         class="btn btn-primary btn-radius btn-brd grd1"
+                       >
+                         Make Public
+                        
+                       </a>
+                       <%}else{%>
+                        <a
+                        style = "text-decoration: none;"
+                         href="/posts/<%= item.postID %>/makePostPublic"
+                         class="btn btn-danger btn-radius btn-brd grd1"
+                       >
+                         Make Private
+                        
+                       </a>
+                        <%}%>
+               
+              </div>
+            </div>
+          </div>
+            <%}%>
+          </div>
+        <!--FavoritedFilmsEND-->
+        <%- include("./partials/_searchFilmModal.ejs") %> <%-
+              include("./partials/_searchActorModal.ejs") %>
+      </main>
+
+      <%-include("./partials/_footer.ejs")%>
+    </div>
+
+    <script src="/js/main.min.js"></script>
+  </body>
+</html>

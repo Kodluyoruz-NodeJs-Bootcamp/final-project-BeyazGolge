@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <%- include("./partials/_head.ejs") %>
+  <body class="is-boxed has-animations">
+    <div class="body-wrap">
+  <%- include("./partials/_header.ejs") %>
+      
+
+      <main>
+        <section class="hero">
+          <div class="container">
+            <div class="hero-inner">
+              <div class="hero-copy">
+                <h1 class="hero-title mt-0">
+                  Welcome to Community Favorites 
+                </h1>
+                <p class="hero-paragraph">
+                  You can see what people added to their favorites, like and comment to their posts
+                </p>
+                
+                <div class="btn-group" role="group">
+                  <div class="hero-cta">
+                    <a
+                      type="button"
+                      class="button button-primary"
+                      href="/logout"
+                    >
+                      Logout</a
+                    >
+                  </div>
+                  <div class="hero-cta">
+                    <a
+                      type="button"
+                      class="button button-primary"
+                      href="/dashboard"
+                    >
+                      My Dashboard</a
+                    >
+                  </div>
+                  <div class="hero-cta">
+                    <a
+                      type="button"
+                      class="button button-primary"
+                      href="/posts"
+                    >
+                      Community Favorites</a
+                    >
+                  </div>
+                </div>
+              </div>
+             
+              <!-- end row -->
+            </div>
+
+        <div class="row" style="margin-top:20px;">
+        <!--Films Card Start-->
+
+          <div class="col-sm-4">
+          <div class="card" style="margin-top: 10px;">
+            <img class="card-img-top" style="height: 450px;" src= <%= postImage %>>
+            <div class="card-body">
+              <h5 class="card-title" style="color:black"><%= postTitle %></h5>
+              <p class="card-title" style="color:black">By <%= postedBy %></p>
+          </div>
+        </div>
+          
+        </div>
+        <!--Films Card End-->
+
+        <!--Comments-Start-->
+        <div class="col-sm-5">
+          <% for(const item of postsComments){ %> 
+            <div class="card" style="margin-top:20px;">
+              <div class="card-header" style="color: black;">
+                By <%= item.commenter %>
+              </div>
+              <div class="card-body">
+                <p class="card-text" style="color: black;"><%= item.comment %></p>
+              </div>
+            </div>
+            <%}%>
+        </div>
+        <!--Comments-End-->
+
+        <div class="col-sm-3">
+          <form method="POST" action="/posts/<%=postID%>/comments" class="form-horizontal">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <textarea
+                  type="text"
+                  name="comment"
+                  class="form-control"
+                ></textarea>
+              </div>
+            </div>
+            <button
+            type="submit"
+            class="btn btn-primary btn-radius btn-brd grd1"
+            style="margin-left: 20px;"
+          >
+            Comment
+          </button>
+          </form>
+
+        </div>
+
+      </main>
+
+      <%-include("./partials/_footer.ejs")%>
+    </div>
+
+    <script src="/js/main.min.js"></script>
+  </body>
+</html>
